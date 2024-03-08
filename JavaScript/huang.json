@@ -1,0 +1,63 @@
+{
+  "id": 31,
+  "department_id": 142,
+  "user_name": null,
+  "user_number": null,
+  "create_date": "2023-06-28T09:51:03.3415317+08:00",
+  "business_state": 1,
+  "content": "今天上了一天班小明同学小明同学小明同学小明同学",
+  "date": "2023-06-28",
+  "row_num": 0,
+  "item_list": [
+    {
+      "id": 38,
+      "daily_id": 31,
+      "project_id": 27943,
+      "product_number": "Test",
+      "procedure_base_id": 16,
+      "procedure_name": "料单",
+      "stage_base_id": 1,
+      "stage_name": "机械设计",
+      "content": "小明同学小明同学小明同学小明同学小明同学",
+      "time": 4,
+      "is_completed": true,
+      "file_list": [
+        {
+          "id": 16808,
+          "localUrl": "http://tmp/dCfX3O48dtLKcd7642502ce34abdb3a5fd9563651167.png"
+        },
+        {
+          "id": 16809,
+          "localUrl": "http://tmp/7KVD4y4TYJpF1dfa3921e80e2f746df81feba2b840f2.png"
+        }
+      ],
+      "name": "料单"
+    },
+    {
+      "id": 39,
+      "daily_id": 31,
+      "project_id": 27943,
+      "product_number": "Test",
+      "procedure_base_id": 17,
+      "procedure_name": "机架",
+      "stage_base_id": 1,
+      "stage_name": "机械设计",
+      "content": "小明同学",
+      "time": 1,
+      "is_completed": false,
+      "file_list": [
+        {
+          "id": 16755,
+          "name": null,
+          "url": "http://tmp/tFcifFP4huLz87944f5997b309d2f0a607c6d5cbd97f.jpeg",
+          "localUrl": "http://tmp/tFcifFP4huLz87944f5997b309d2f0a607c6d5cbd97f.jpeg"
+        }
+      ],
+      "name": "机架"
+    }
+  ],
+  "reportTime": "2023-06-28",
+  "remark": "今天上了一天班小明同学小明同学小明同学小明同学",
+  "machineName": "Test",
+  "machineId": 27943
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/xgplayer@3.0.2/dist/index.min.css
+"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="mse"></div>
+    <script src="
+    https://cdn.jsdelivr.net/npm/xgplayer@3.0.2/dist/index.min.js
+    "></script>
+    <script>
+      window.onload = function () {
+        let player = new Player({
+          id: "mse",
+          url: "./8cdf8016eccf9ddda81156f3f1fc46af.mp4",
+          pip: true, //打开画中画功能
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>东富龙报表系统</title>
+    <link
+      href="./css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link href="./css/login.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="./js/jquery.slim.js" crossorigin="anonymous"></script>
+    <script src="./js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://report.tofflon.com/decision/file?path=/com/fr/web/ui/fineui.min.js&type=plain&parser=plain"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 登录 -->
+      <div class="container-form container-signin panel-active">
+        <form action="#" class="form" id="form2">
+          <h2 class="form-title">欢迎登录</h2>
+          <input
+            type="email"
+            placeholder="账号"
+            class="input"
+            id="inputUsername"
+          />
+          <input
+            type="password"
+            placeholder="密码"
+            class="input"
+            id="inputPassword"
+          />
+          <a href="#" class="link"></a>
+          <button type="button" class="btn" id="submitBtn">登录</button>
+        </form>
+      </div>
+
+      <!-- 叠加层部分 -->
+      <div class="container-overlay">
+        <div class="overlay"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      doSubmit();
+    });
+
+    const doSubmit = () => {
+      let username = document.getElementById("inputUsername").value.trim();
+      let password = document.getElementById("inputPassword").value.trim();
+      if (username === "") {
+        window.alert("请输入用户名");
+        return false;
+      }
+      if (password === "") {
+        window.alert("请输入密码");
+        return false;
+      }
+      /**
+       * 通过登录接口发送post请求，携带用户名密码等信息
+       */
+      $.ajax({
+        url: "https://report.tofflon.com/decision/login",
+        contentType: "application/json",
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify({
+          username: username,
+          password: password,
+          validity: -1,
+          origin: getUrlQuery("origin"),
+        }),
+        success: function (res) {
+          // 登录成功后保存是否保持登录状态以及token
+          if (res.data) {
+            let data = res.data;
+            let day = data.validity === -2 ? 14 * 24 : -1;
+            // 修改cookie
+            BI.Cache.addCookie("fine_remember_login", data.validity, "/", day);
+            BI.Cache.addCookie("fine_auth_token", data.accessToken, "/", day);
+
+            // 然后跳转到相应的页面
+            let response = data.originUrlResponse;
+            if (BI.toUpperCase(response.method) === "GET") {
+              window.location.href = response.originUrl;
+            } else {
+              doActionByForm(response.originUrl, response.parameters, {
+                method: response.method,
+              });
+            }
+          } else {
+            // 提示错误信息
+            alert(res.errorMsg);
+          }
+        },
+        error: function () {
+          alert("超时或服务器其他错误");
+        },
+      });
+    };
+
+    // 查询url参数
+    function getUrlQuery(name) {
+      let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      let r = window.location.search.substr(1).match(reg);
+      if (r !== null) return r[2];
+      return "";
+    }
+
+    // 通过form表单跳转
+    function doActionByForm(url, data, options) {
+      options = options || {};
+      let config = {
+        method: options.method,
+        url: url,
+        data: data,
+        target: options.target,
+      };
+      let $form = $('<form method="' + config.method + '" />');
+      $form.attr("action", config.url);
+      $form.attr("method", config.method || "post");
+      $form.attr("target", config.target || "_self");
+      for (let key in config.data) {
+        $form.append(
+          '<input type="hidden" name="' +
+            key +
+            '" value="' +
+            config.data[key] +
+            '" />'
+        );
+      }
+      $(document.body).append($form);
+      $form[0].submit();
+      $form.destroy();
+    }
+  </script>
+</html>

@@ -1,0 +1,54 @@
+{
+    "id": "1693856624873689090",
+    "name": "黄曦测试模板1",
+    "type": "1",
+    "researchNature": "2",
+    "remark": "黄曦测试模板1",
+    "questionnaireSetDetailUpdateDTOList": [
+        {
+            "itemContent": null,
+            "itemOptions": "{\"id\":\"1693905671764430849\",\"key\":\"slider__11783248611692681839015\",\"icon\":\"icon-drag-rate\",\"type\":\"slider\",\"label\":\"测试测试\",\"model\":\"slider__11783248611692681839015\",\"rules\":{\"message\":\"\",\"required\":false},\"componentProps\":{\"max\":100,\"min\":0,\"leftLable\":\"不满意\",\"rightLable\":\"满意\",\"defaultValue\":0}}",
+            "itemOrder": 1,
+            "itemScore": null,
+            "itemTitle": "测试测试",
+            "itemType": "slider",
+            "remark": null
+        },
+        {
+            "itemContent": null,
+            "itemOptions": "{\"id\":\"1693905671764430850\",\"key\":\"divider__6547525021692681839716\",\"icon\":\"icon-drag-rate\",\"type\":\"divider\",\"label\":\"分隔线\",\"model\":\"divider__6547525021692681839716\",\"rules\":{\"message\":\"必填项\",\"required\":false},\"componentProps\":{\"dashed\":false}}",
+            "itemOrder": 2,
+            "itemScore": null,
+            "itemTitle": "分隔线",
+            "itemType": "divider",
+            "remark": null
+        },
+        {
+            "itemContent": null,
+            "itemOptions": "{\"id\":\"1693905671764430851\",\"key\":\"slider__19421449231692681840731\",\"icon\":\"icon-drag-rate\",\"type\":\"slider\",\"label\":\"sssss\",\"model\":\"slider__19421449231692681840731\",\"rules\":{\"message\":\"\",\"required\":false},\"componentProps\":{\"max\":100,\"min\":0,\"leftLable\":\"不满意\",\"rightLable\":\"满意\",\"defaultValue\":0}}",
+            "itemOrder": 3,
+            "itemScore": null,
+            "itemTitle": "sssss",
+            "itemType": "slider",
+            "remark": null
+        },
+        {
+            "itemContent": null,
+            "itemOptions": "{\"id\":\"1693905671764430852\",\"key\":\"rate__40901437841692681841564\",\"icon\":\"icon-drag-rate\",\"type\":\"rate\",\"label\":\"这是修改后的评分条\",\"model\":\"rate__40901437841692681841564\",\"rules\":{\"message\":\"必填项\",\"required\":false},\"componentProps\":{\"count\":5,\"allowHalf\":true,\"defaultValue\":4}}",
+            "itemOrder": 4,
+            "itemScore": null,
+            "itemTitle": "这是修改后的评分条",
+            "itemType": "rate",
+            "remark": null
+        },
+        {
+            "itemContent": null,
+            "itemOptions": "{\"id\":\"1693905671764430853\",\"key\":\"checkbox__31519559111692692111862\",\"icon\":\"icon-drag-checkbox\",\"type\":\"checkbox\",\"label\":\"多选框\",\"model\":\"checkbox__31519559111692692111862\",\"rules\":{\"message\":\"必填项\",\"required\":false},\"componentProps\":{\"options\":[{\"label\":\"选项\",\"value\":\"1\"},{\"label\":\"选项\",\"value\":\"2\"}],\"defaultValue\":[]}}",
+            "itemOrder": 5,
+            "itemScore": null,
+            "itemTitle": "多选框",
+            "itemType": "checkbox",
+            "remark": null
+        }
+    ]
+}

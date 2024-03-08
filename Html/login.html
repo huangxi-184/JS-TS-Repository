@@ -1,0 +1,196 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>东富龙报表系统</title>
+    <link
+      href="./css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <script src="./js/jquery.slim.js" crossorigin="anonymous"></script>
+    <script src="./js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://report.tofflon.com/decision/file?path=/com/fr/web/ui/fineui.min.js&type=plain&parser=plain"></script>
+  </head>
+
+  <body style="margin: 0px; padding: 0px">
+    <div class="container login-area">
+      <form class="login-box" action="" method="post" onsubmit="return false;">
+        <h2>东富龙报表系统</h2>
+        <div class="login-item">
+          <label for="inputUsername" class="sr-only">用户名</label>
+          <input
+            type="text"
+            id="inputUsername"
+            class="form-control"
+            placeholder="用户名"
+            required=""
+            autofocus=""
+          />
+        </div>
+        <div class="login-item">
+          <label for="inputPassword" class="sr-only">密码</label>
+          <input
+            type="password"
+            id="inputPassword"
+            class="form-control"
+            placeholder="密码"
+            required=""
+          />
+        </div>
+        <button
+          class="btn btn-lg btn-primary btn-block"
+          type="submit"
+          id="submitBtn"
+        >
+          登录
+        </button>
+      </form>
+    </div>
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: url("./img/form.jpg") center center / cover no-repeat;
+        position: relative;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        width: 35%;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        bottom: 0px;
+      }
+
+      .login-area {
+        max-width: 500px;
+        min-width: 448px;
+        background-color: rgba(255, 255, 255, 0.95);
+      }
+
+      .login-box {
+        width: 300px;
+        margin-top: 100px;
+      }
+
+      .login-box h2 {
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .login-item {
+        margin-bottom: 20px;
+      }
+    </style>
+
+    <script>
+      document.getElementById("submitBtn").addEventListener("click", () => {
+        doSubmit();
+      });
+
+      const doSubmit = () => {
+        let username = document.getElementById("inputUsername").value.trim();
+        let password = document.getElementById("inputPassword").value.trim();
+        if (username === "") {
+          window.alert("请输入用户名");
+          return false;
+        }
+        if (password === "") {
+          window.alert("请输入密码");
+          return false;
+        }
+        /**
+         * 通过登录接口发送post请求，携带用户名密码等信息
+         */
+        $.ajax({
+          url: "https://192.168.1.228:9443/digiwin/kanban/login",
+          contentType: "application/json",
+          type: "POST",
+          dataType: "json",
+          data: JSON.stringify({
+            username: username,
+            password: password,
+            validity: -1,
+            origin: getUrlQuery("origin"),
+          }),
+          success: function (res) {
+            // 登录成功后保存是否保持登录状态以及token
+            if (res.data) {
+              let data = res.data;
+              let day = data.validity === -2 ? 14 * 24 : -1;
+              // 修改cookie
+              BI.Cache.addCookie(
+                "fine_remember_login",
+                data.validity,
+                "/",
+                day
+              );
+              BI.Cache.addCookie("fine_auth_token", data.accessToken, "/", day);
+
+              // 然后跳转到相应的页面
+              let response = data.originUrlResponse;
+              if (BI.toUpperCase(response.method) === "GET") {
+                window.location.href = response.originUrl;
+              } else {
+                doActionByForm(response.originUrl, response.parameters, {
+                  method: response.method,
+                });
+              }
+            } else {
+              // 提示错误信息
+              alert(res.errorMsg);
+            }
+          },
+          error: function () {
+            alert("超时或服务器其他错误");
+          },
+        });
+      };
+
+      // 查询url参数
+      function getUrlQuery(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        let r = window.location.search.substr(1).match(reg);
+        if (r !== null) return r[2];
+        return "";
+      }
+
+      // 通过form表单跳转
+      function doActionByForm(url, data, options) {
+        options = options || {};
+        let config = {
+          method: options.method,
+          url: url,
+          data: data,
+          target: options.target,
+        };
+        let $form = $('<form method="' + config.method + '" />');
+        $form.attr("action", config.url);
+        $form.attr("method", config.method || "post");
+        $form.attr("target", config.target || "_self");
+        for (let key in config.data) {
+          $form.append(
+            '<input type="hidden" name="' +
+              key +
+              '" value="' +
+              config.data[key] +
+              '" />'
+          );
+        }
+        $(document.body).append($form);
+        $form[0].submit();
+        $form.destroy();
+      }
+    </script>
+  </body>
+</html>

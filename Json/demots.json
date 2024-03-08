@@ -1,0 +1,35 @@
+{
+  "name": "routes.serviceItemStatistic.bigScreenOfData",
+  "icon": "",
+  "path": "http://172.169.62.193/monitor/job",
+  "hideMenu": false,
+  "meta": {
+    "ignoreKeepAlive": true,
+    "icon": "",
+    "title": "定时任务",
+    "hideTab": false,
+    "hideMenu": false,
+    "signature": false,
+    "isExt": false,
+    "affix": false,
+    "id": "1476440324813836290"
+  }
+},
+{
+    "name": "routes.serviceItemStatistic.bigScreenOfData",
+    "icon": "",
+    "path": "http://172.169.62.193/mes/dv/sync",
+    "hideMenu": false,
+    "meta": {
+      "ignoreKeepAlive": true,
+      "icon": "",
+      "title": "设备同步",
+      "hideTab": false,
+      "hideMenu": false,
+      "signature": false,
+      "isExt": false,
+      "affix": false,
+      "id": "1476440324813836291"
+    }
+  }
+  

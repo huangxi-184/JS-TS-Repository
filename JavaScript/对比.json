@@ -1,0 +1,18 @@
+{
+    "id": "1691613743669641218",
+    "name": "hx1",
+    "type": "1",
+    "researchNature": "2",
+    "remark": "1",
+    "questionnaireSetDetailUpdateDTOList": [
+        {
+            "itemContent": null,
+            "itemOptions": "{\"type\":\"divider\",\"label\":\"分隔线\",\"icon\":\"icon-drag-rate\",\"componentProps\":{\"dashed\":false},\"model\":\"divider__88334989631692147167710\",\"key\":\"divider__88334989631692147167710\",\"rules\":{\"required\":false,\"message\":\"必填项\"}}",
+            "itemOrder": 3,
+            "itemScore": null,
+            "itemTitle": "分隔线",
+            "itemType": "divider",
+            "remark": null
+        }
+    ]
+}

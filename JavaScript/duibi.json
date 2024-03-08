@@ -1,0 +1,17 @@
+{
+    "name": "hx1",
+    "type": "1",
+    "researchNature": "2",
+    "remark": "1",
+    "detailAddDTOS": [
+        {
+            "itemContent": null,
+            "itemOptions": "{\"type\":\"number\",\"label\":\"数字输入框\",\"icon\":\"icon-drag-number\",\"componentProps\":{\"placeholder\":\"请输入\"},\"model\":\"number__55132894631692146161731\",\"key\":\"number__55132894631692146161731\",\"rules\":{\"required\":false,\"message\":\"必填项\"}}",
+            "itemOrder": 1,
+            "itemScore": null,
+            "itemTitle": "数字输入框",
+            "itemType": "number",
+            "remark": null
+        }
+    ]
+}

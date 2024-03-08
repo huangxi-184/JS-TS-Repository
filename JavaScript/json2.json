@@ -1,0 +1,25 @@
+{
+    "itemOrder": 1,
+    "itemType": "slider",
+    "itemTitle": "滑动评分条",
+    "itemScore": "56",
+    "itemOptions": {
+        "id": "1694150409502371842",
+        "key": "slider__78120653211692751894336",
+        "icon": "icon-drag-rate",
+        "type": "slider",
+        "label": "滑动评分条",
+        "model": "slider__78120653211692751894336",
+        "rules": {
+            "message": "",
+            "required": false
+        },
+        "componentProps": {
+            "max": 100,
+            "min": 0,
+            "leftLable": "不满意",
+            "rightLable": "满意",
+            "defaultValue": 0
+        }
+    }
+}
