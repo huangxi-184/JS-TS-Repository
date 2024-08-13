@@ -5,18 +5,18 @@
  */
 
 function findDisappearedNumbers(nums: number[]): number[] {
-    // const set = new Set(nums);
-    // const newArray = Array.from(set)
-    // newArray.sort((a, b) => a - b);
-    const arrayLenth = nums.length;
+  // const set = new Set(nums);
+  // const newArray = Array.from(set)
+  // newArray.sort((a, b) => a - b);
+  const arrayLenth = nums.length
 
-    let total: number[] = []
+  let total: number[] = []
 
-    nums.forEach((item, index) => {
-        total.push(index + 1)
-    })
-    console.log(total);
-    return nums
-};
+  nums.forEach((item, index) => {
+    total.push(index + 1)
+  })
+  console.log(total)
+  return nums
+}
 
 findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1])

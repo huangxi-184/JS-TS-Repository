@@ -1,29 +1,31 @@
-// 防抖函数
-function debounce(func: Function, wait: number, immediate: boolean = false) {
-  let timeout: number | null = null
+function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number,
+  immediate: boolean = false
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | null = null
 
-  const innerDebounceFunc = function () {
+  const innerDebounceFunc = function (this: ThisParameterType<T>, ...args: Parameters<T>) {
     let context = this
-    let args = arguments
 
     if (timeout) {
       clearTimeout(timeout)
     }
 
     if (immediate) {
-      let callnow = !timeout
+      let callNow = !timeout
 
-      timeout = setTimeout(function () {
+      timeout = setTimeout(() => {
         timeout = null
       }, wait)
 
-      if (callnow) {
+      if (callNow) {
         func.apply(context, args)
       }
     } else {
-      timeout = setTimeout(function () {
+      timeout = setTimeout(() => {
         func.apply(context, args)
-      })
+      }, wait)
     }
   }
 
